@@ -559,7 +559,7 @@ class SpeakActivity(activity.Activity):
         self._voice_palette = voice_palette_button.get_palette()
         self._voice_palette.set_content(self._voice_box)
         self._voice_box.show_all()
-        voice_palette_button.connect('clicked', self._face_palette_cb)
+        voice_palette_button.connect('clicked', self._toggle_palette_cb)
         voicebar.insert(voice_palette_button, -1)
         voice_palette_button.show()
 
