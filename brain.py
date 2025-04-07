@@ -168,6 +168,10 @@ def load(activity, voice, sorry=None):
             activity.face.say_notification(hello)
         elif sorry:
             activity.face.say_notification(sorry)
+        else:
+            hello = \
+               _("Hi. %s here, again.") \
+                % brain_name 
 
     GLib.idle_add(load_brain)
     return True
