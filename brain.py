@@ -112,6 +112,18 @@ def respond(text):
             return _("Sorry, I can't understand what you are asking about.")
        
 
+def get_greeting(voice, is_first_greeting=True):
+    """Get the appropriate greeting for the robot based on voice and greeting state."""
+    if voice.friendlyname in BOTS:
+        brain_name = BOTS[voice.friendlyname]['name']
+    else:
+        brain_name = BOTS[_('English')]['name']
+    
+    if is_first_greeting:
+        return _("Hello, I am Robot %s.") % brain_name
+    else:
+        return _("Hi. %s here, again.") % brain_name
+
 def load(activity, voice, sorry=None):
     if voice == _kernel_voice:
         return False
@@ -160,18 +172,15 @@ def load(activity, voice, sorry=None):
         if is_first_session:
             _kernel.respond(_('my name is %s') % (profile.get_nick_name()))
             _kernel.respond(_('I am %d years old') % (_get_age()))
-            hello = \
-                _("Hello, I'm a robot \"%s\". Please ask me any question.") \
-                % brain_name
+            hello = get_greeting(voice)
             if sorry:
                 hello += ' ' + sorry
             activity.face.say_notification(hello)
         elif sorry:
             activity.face.say_notification(sorry)
         else:
-            hello = \
-               _("Hi. %s here, again.") \
-                % brain_name 
+            hello = get_greeting(voice, is_first_greeting=False)
+            activity.face.say_notification(hello)
 
     GLib.idle_add(load_brain)
     return True
