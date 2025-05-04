@@ -920,16 +920,14 @@ class SpeakActivity(activity.Activity):
             selected_text = combo.get_active_text()
             if selected_text:
                 if selected_text.startswith("You: "):
-                    # For user entries, put the text in the input box without "You: " prefix
                     user_text = selected_text[5:]  # Remove "You: " prefix
                     self._entry.set_text(user_text)
                     self._entry.select_region(0, -1)
                 elif selected_text.startswith("Bot: "):
-                    # For bot entries, only speak the response and do nothing else
                     bot_text = selected_text[5:]  # Remove "Bot: " prefix
                     self.face.say(bot_text)
-                else:
-                    return
+                    self._entry.set_text(bot_text)
+                    self._entry.select_region(0, -1)
 
     def _entry_key_press_cb(self, combo, event):
         # make the up/down arrows navigate through our history
