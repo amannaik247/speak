@@ -925,11 +925,10 @@ class SpeakActivity(activity.Activity):
                     self._entry.set_text(user_text)
                     self._entry.select_region(0, -1)
                 elif selected_text.startswith("Bot: "):
-                    self._entry.set_text("")
                     # For bot entries, only speak the response and do nothing else
                     bot_text = selected_text[5:]  # Remove "Bot: " prefix
                     self.face.say(bot_text)
-                    # Don't modify the input box or do anything else
+                else:
                     return
 
     def _entry_key_press_cb(self, combo, event):
