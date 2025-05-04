@@ -924,6 +924,7 @@ class SpeakActivity(activity.Activity):
                     user_text = selected_text[5:]  # Remove "You: " prefix
                     self._entry.set_text(user_text)
                     self._entry.select_region(0, -1)
+                    return
                 elif selected_text.startswith("Bot: "):
                     # For bot entries, only speak the response and do nothing else
                     bot_text = selected_text[5:]  # Remove "Bot: " prefix
