@@ -1000,7 +1000,7 @@ class SpeakActivity(activity.Activity):
                     # Select the new user entry
                     self._entrycombo.set_active(len(history) - 2)  # Select user entry
                     
-                    # Clear the input box
+                    # Set the input box to the user text
                     self._entry.set_text(text)
             else:
                 self.face.say(text)
@@ -1016,7 +1016,7 @@ class SpeakActivity(activity.Activity):
                         # select the new item
                         self._entrycombo.set_active(len(history) - 1)
                     
-                    # Clear the input box
+                    # Set the input box to the user text
                     self._entry.set_text(text)
 
         if text:
