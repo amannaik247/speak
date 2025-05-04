@@ -911,7 +911,7 @@ class SpeakActivity(activity.Activity):
         self.face.update()
         self._chat.update(self.face.status)
 
-    def _combo_changed_cb(self, combo):
+    def _combo_changed_cb(self, combo, text):
         # when a new item is chosen, make sure the text is selected
         if not self._entry.is_focus():
             if not self._tablet_mode:
@@ -924,8 +924,8 @@ class SpeakActivity(activity.Activity):
                     user_text = selected_text[5:]  # Remove "You: " prefix
                     self._entry.set_text(user_text)
                     self._entry.select_region(0, -1)
-                    return
                 elif selected_text.startswith("Bot: "):
+                    self._entry.set_text(text)
                     # For bot entries, only speak the response and do nothing else
                     bot_text = selected_text[5:]  # Remove "Bot: " prefix
                     self.face.say(bot_text)
