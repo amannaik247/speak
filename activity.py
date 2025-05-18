@@ -607,7 +607,9 @@ class SpeakActivity(activity.Activity):
         pitchbar.set_draw_value(False)
         pitchbar.set_size_request(240, 15)
 
-        pitchbar_toolitem = ToolWidget(widget=pitchbar, label_text=_('Pitch:'))
+        pitchbar_toolitem = ToolWidget(widget=pitchbar, label_text=None)
+        pitchbar_toolitem.set_tooltip_text(_('Pitch'))
+        pitchbar_toolitem.label.set_from_icon_name('pitch', Gtk.IconSize.MENU)
         voicebar.insert(pitchbar_toolitem, -1)
 
         self.rateadj = Gtk.Adjustment(self.face.status.rate,
@@ -617,7 +619,9 @@ class SpeakActivity(activity.Activity):
         ratebar.set_draw_value(False)
         ratebar.set_size_request(240, 15)
 
-        ratebar_toolitem = ToolWidget(widget=ratebar, label_text=_('Rate:'))
+        ratebar_toolitem = ToolWidget(widget=ratebar, label_text=None)
+        ratebar_toolitem.set_tooltip_text(_('Rate'))
+        ratebar_toolitem.label.set_from_icon_name('rate', Gtk.IconSize.MENU)
         voicebar.insert(ratebar_toolitem, -1)
 
         voicebar.show_all()
