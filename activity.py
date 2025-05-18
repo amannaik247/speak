@@ -605,7 +605,7 @@ class SpeakActivity(activity.Activity):
                                        1, speech.PITCH_MAX // 10, 0)
         pitchbar = Gtk.HScale.new(self.pitchadj)
         pitchbar.set_draw_value(False)
-        pitchbar.set_size_request(240, 15)
+        pitchbar.set_size_request(480, 30)
 
         pitchbar_toolitem = ToolWidget(widget=pitchbar, label_text=None)
         pitchbar_toolitem.set_tooltip_text(_('Pitch'))
@@ -617,7 +617,7 @@ class SpeakActivity(activity.Activity):
                                       1, speech.RATE_MAX // 10, 0)
         ratebar = Gtk.HScale.new(self.rateadj)
         ratebar.set_draw_value(False)
-        ratebar.set_size_request(240, 15)
+        ratebar.set_size_request(480, 30)
 
         ratebar_toolitem = ToolWidget(widget=ratebar, label_text=None)
         ratebar_toolitem.set_tooltip_text(_('Rate'))
