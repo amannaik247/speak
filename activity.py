@@ -605,11 +605,11 @@ class SpeakActivity(activity.Activity):
                                        1, speech.PITCH_MAX // 10, 0)
         pitchbar = Gtk.HScale.new(self.pitchadj)
         pitchbar.set_draw_value(False)
-        pitchbar.set_size_request(480, 30)
+        pitchbar.set_size_request(240, 15)
 
         pitchbar_toolitem = ToolWidget(widget=pitchbar, label_text=None)
         pitchbar_toolitem.set_tooltip_text(_('Pitch'))
-        pitchbar_toolitem.label = Gtk.Image.new_from_icon_name('pitch', Gtk.IconSize.MENU)
+        pitchbar_toolitem.label = Gtk.Image.new_from_icon_name('pitch', Gtk.IconSize.LARGE_TOOLBAR)
         voicebar.insert(pitchbar_toolitem, -1)
 
         self.rateadj = Gtk.Adjustment(self.face.status.rate,
@@ -617,11 +617,11 @@ class SpeakActivity(activity.Activity):
                                       1, speech.RATE_MAX // 10, 0)
         ratebar = Gtk.HScale.new(self.rateadj)
         ratebar.set_draw_value(False)
-        ratebar.set_size_request(480, 30)
+        ratebar.set_size_request(240, 15)
 
         ratebar_toolitem = ToolWidget(widget=ratebar, label_text=None)
         ratebar_toolitem.set_tooltip_text(_('Rate'))
-        ratebar_toolitem.label = Gtk.Image.new_from_icon_name('rate', Gtk.IconSize.MENU)
+        ratebar_toolitem.label = Gtk.Image.new_from_icon_name('rate', Gtk.IconSize.LARGE_TOOLBAR)
         voicebar.insert(ratebar_toolitem, -1)
 
         voicebar.show_all()
